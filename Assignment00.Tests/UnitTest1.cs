@@ -18,10 +18,48 @@ public class UnitTest1
 
         //Act
         var program = Assembly.Load(nameof(Assignment00));
-        program.EntryPoint?.Invoke(null, new[]{new String[]{"Hello there"}});
+        program.EntryPoint?.Invoke(null, new[]{Array.Empty<String>()});
 
         //Assert
         var output = writer.GetStringBuilder().ToString().TrimEnd();
         Assert.Equal("Hello, World!", output);
+    }
+
+    [Fact]
+    public void IsLeapYear_true_when_divisible_by_four()
+    {
+        //Arrange
+        using var writer = new StringWriter();
+        Console.SetOut(writer);
+
+        //Act
+        var program = Assembly.Load(nameof(Assignment00));
+        var result4 = LeapYear.IsLeapYear(4);
+        var result8 = LeapYear.IsLeapYear(8);
+        var result16 = LeapYear.IsLeapYear(16);
+
+        //Assert
+        Assert.True(result4);
+        Assert.True(result8);
+        Assert.True(result16);
+    }
+
+    [Fact]
+    public void IsLeapYear_false_when_not_divisible_by_four()
+    {
+        //Arrange
+        using var writer = new StringWriter();
+        Console.SetOut(writer);
+
+        //Act
+        var program = Assembly.Load(nameof(Assignment00));
+        var result3 = LeapYear.IsLeapYear(3);
+        var result7 = LeapYear.IsLeapYear(7);
+        var result101 = LeapYear.IsLeapYear(101);
+
+        //Assert
+        Assert.False(result3);
+        Assert.False(result7);
+        Assert.False(result101);
     }
 }

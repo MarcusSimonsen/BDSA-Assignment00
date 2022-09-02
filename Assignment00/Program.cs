@@ -1,7 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
 
-bool IsLeapYear(int year)
+public class LeapYear
 {
-    throw new NotImplementedException();
+    public static bool IsLeapYear(int year)
+    {
+        return year % 4 == 0;
+    }
 }
