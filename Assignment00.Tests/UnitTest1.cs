@@ -9,7 +9,7 @@ namespace Assignment00.Tests;
 using System.Reflection;
 public class UnitTest1
 {
-    [Fact]ssssssss
+    [Fact]
     public void Main_when_run_prints_hello_world()
     {
         //Arrange
