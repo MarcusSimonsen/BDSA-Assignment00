@@ -2,14 +2,15 @@ using Xunit;
 using FluentAssertions;
 using System;
 using System.IO;
+using System.Reflection;
 
 namespace Assignment00.Tests;
 
 using System.Reflection;
 public class UnitTest1
 {
-    [Fact]
-    public void Echoes_each_word()
+    [Fact]ssssssss
+    public void Main_when_run_prints_hello_world()
     {
         //Arrange
         using var writer = new StringWriter();
@@ -21,6 +22,6 @@ public class UnitTest1
 
         //Assert
         var output = writer.GetStringBuilder().ToString().TrimEnd();
-        Assert.Equal("Hello there\nHello there\nHello there", output);
+        Assert.Equal("Hello, World!", output);
     }
 }
