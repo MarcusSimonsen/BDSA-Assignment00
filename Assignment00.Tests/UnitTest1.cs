@@ -81,4 +81,23 @@ public class UnitTest1
         Assert.False(result300);
         Assert.False(result1000);
     }
+
+    [Fact]
+    public void IsLeapYear_true_when_divisible_by_exactly_400()
+    {
+        //Arrange
+        using var writer = new StringWriter();
+        Console.SetOut(writer);
+
+        //Act
+        var program = Assembly.Load(nameof(Assignment00));
+        var result400 = LeapYear.IsLeapYear(400);
+        var result800 = LeapYear.IsLeapYear(800);
+        var result1600 = LeapYear.IsLeapYear(1600);
+
+        //Assert
+        Assert.True(result400);
+        Assert.True(result800);
+        Assert.True(result1600);
+    }
 }
