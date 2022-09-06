@@ -10,7 +10,7 @@ using System.Reflection;
 public class UnitTest1
 {
     [Fact]
-    public void Main_when_run_prints_hello_world()
+    public void Main_when_run_asks_for_year()
     {
         //Arrange
         using var writer = new StringWriter();
@@ -21,8 +21,8 @@ public class UnitTest1
         program.EntryPoint?.Invoke(null, new[]{Array.Empty<String>()});
 
         //Assert
-        var output = writer.GetStringBuilder().ToString().TrimEnd();
-        Assert.Equal("Hello, World!", output);
+        var output = writer.GetStringBuilder().ToString();
+        Assert.Equal("Please enter a year: ", output);
     }
 
     [Fact]
