@@ -62,4 +62,23 @@ public class UnitTest1
         Assert.False(result7);
         Assert.False(result101);
     }
+
+    [Fact]
+    public void IsLeapYear_false_when_divisble_by_exactly_100()
+    {
+        //Arrange
+        using var writer = new StringWriter();
+        Console.SetOut(writer);
+
+        //Act
+        var program = Assembly.Load(nameof(Assignment00));
+        var result100 = LeapYear.IsLeapYear(100);
+        var result300 = LeapYear.IsLeapYear(300);
+        var result1000 = LeapYear.IsLeapYear(1000);
+
+        //Assert
+        Assert.False(result100);
+        Assert.False(result300);
+        Assert.False(result1000);
+    }
 }
