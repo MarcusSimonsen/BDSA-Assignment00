@@ -15,14 +15,116 @@ public class UnitTest1
         //Arrange
         using var writer = new StringWriter();
         Console.SetOut(writer);
+        using var reader = new StringReader("10");
+        Console.SetIn(reader);
 
         //Act
         var program = Assembly.Load(nameof(Assignment00));
         program.EntryPoint?.Invoke(null, new[]{Array.Empty<String>()});
 
         //Assert
-        var output = writer.GetStringBuilder().ToString();
-        Assert.Equal("Please enter a year: ", output);
+        var output = writer.GetStringBuilder().ToString().TrimEnd();
+        string expected = "Please enter a year: ";
+        Assert.Equal(expected, output.Substring(0, expected.Length));
+    }
+
+    [Fact]
+    public void Main_prints_yay_on_input_2004()
+    {
+        //FIXME:
+        //Arrange
+        using var writer = new StringWriter();
+        Console.SetOut(writer);
+        using var reader = new StringReader("2004");
+        Console.SetIn(reader);
+
+        //Act
+        var program = Assembly.Load(nameof(Assignment00));
+        program.EntryPoint?.Invoke(null, new[]{Array.Empty<String>()});
+
+        //Assert
+        var output = writer.GetStringBuilder().ToString().TrimEnd();
+        string expected = "yay";
+        Assert.Equal(expected, output.Substring(output.Length-expected.Length));
+    }
+
+    [Fact]
+    public void Main_prints_nay_on_input_2005()
+    {
+        //FIXME:
+        //Arrange
+        using var writer = new StringWriter();
+        Console.SetOut(writer);
+        using var reader = new StringReader("2005");
+        Console.SetIn(reader);
+
+        //Act
+        var program = Assembly.Load(nameof(Assignment00));
+        program.EntryPoint?.Invoke(null, new[]{Array.Empty<String>()});
+
+        //Assert
+        var output = writer.GetStringBuilder().ToString().TrimEnd();
+        string expected = "nay";
+        Assert.Equal(expected, output.Substring(output.Length-expected.Length));
+    }
+
+    [Fact]
+    public void Main_handles_no_input()
+    {
+        //Arrange
+        using var writer = new StringWriter();
+        Console.SetOut(writer);
+        using var reader = new StringReader("");
+        Console.SetIn(reader);
+
+        //Act
+        var program = Assembly.Load(nameof(Assignment00));
+        program.EntryPoint?.Invoke(null, new[]{Array.Empty<String>()});
+
+        //Assert
+        var output = writer.GetStringBuilder().ToString().TrimEnd();
+        string expected = "Please input a number";
+        Assert.Equal(expected, output.Substring(output.Length-expected.Length));
+    }
+
+    [Fact]
+    public void Main_handles_not_number_input()
+    {
+        //FIXME:
+        //Arrange
+        using var writer = new StringWriter();
+        Console.SetOut(writer);
+        using var reader = new StringReader("hello");
+        Console.SetIn(reader);
+
+        //Act
+        var program = Assembly.Load(nameof(Assignment00));
+        program.EntryPoint?.Invoke(null, new[]{Array.Empty<String>()});
+
+        //Assert
+        var output = writer.GetStringBuilder().ToString().TrimEnd();
+        string expected = "Please input only a number";
+        Assert.Equal(expected, output.Substring(output.Length-expected.Length));
+    }
+
+    [Fact]
+    public void Main_handles_excessive_large_number()
+    {
+        //FIXME:
+        //Arrange
+        using var writer = new StringWriter();
+        Console.SetOut(writer);
+        using var reader = new StringReader("100000000000");
+        Console.SetIn(reader);
+
+        //Act
+        var program = Assembly.Load(nameof(Assignment00));
+        program.EntryPoint?.Invoke(null, new[]{Array.Empty<String>()});
+
+        //Assert
+        var output = writer.GetStringBuilder().ToString().TrimEnd();
+        string expected = "Please input a year between 1580 and 3000";
+        Assert.Equal(expected, output.Substring(output.Length-expected.Length));
     }
 
     [Fact]
