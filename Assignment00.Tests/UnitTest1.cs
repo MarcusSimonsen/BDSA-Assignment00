@@ -31,7 +31,6 @@ public class UnitTest1
     [Fact]
     public void Main_prints_yay_on_input_2004()
     {
-        //FIXME:
         //Arrange
         using var writer = new StringWriter();
         Console.SetOut(writer);
@@ -51,7 +50,6 @@ public class UnitTest1
     [Fact]
     public void Main_prints_nay_on_input_2005()
     {
-        //FIXME:
         //Arrange
         using var writer = new StringWriter();
         Console.SetOut(writer);
@@ -90,7 +88,6 @@ public class UnitTest1
     [Fact]
     public void Main_handles_not_number_input()
     {
-        //FIXME:
         //Arrange
         using var writer = new StringWriter();
         Console.SetOut(writer);
@@ -110,7 +107,6 @@ public class UnitTest1
     [Fact]
     public void Main_handles_excessive_large_number()
     {
-        //FIXME:
         //Arrange
         using var writer = new StringWriter();
         Console.SetOut(writer);
