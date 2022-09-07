@@ -119,7 +119,26 @@ public class UnitTest1
 
         //Assert
         var output = writer.GetStringBuilder().ToString().TrimEnd();
-        string expected = "Please input a year between 1580 and 3000";
+        string expected = "Please input a year between 1582 and 2147483647";
+        Assert.Equal(expected, output.Substring(output.Length-expected.Length));
+    }
+
+    [Fact]
+    public void Main_reject_years_before_1582()
+    {
+        //Arrange
+        using var writer = new StringWriter();
+        Console.SetOut(writer);
+        using var reader = new StringReader("1500");
+        Console.SetIn(reader);
+
+        //Act
+        var program = Assembly.Load(nameof(Assignment00));
+        program.EntryPoint?.Invoke(null, new[]{Array.Empty<String>()});
+
+        //Assert
+        var output = writer.GetStringBuilder().ToString().TrimEnd();
+        string expected = "Please input a year after 1582";
         Assert.Equal(expected, output.Substring(output.Length-expected.Length));
     }
 

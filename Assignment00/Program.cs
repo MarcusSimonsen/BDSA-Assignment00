@@ -13,10 +13,9 @@ public class LeapYear
         try
         {
             year = Int32.Parse(input);
-            //FIXME: Implement InvalidYearException instead of OverflowException
-            if (year < 1580 || year > 3000)
+            if (year < 1582)
             {
-                throw new OverflowException("Year less than 1580 or larger than");
+                throw new InvalidYearException("Year less than 1582");
             }
             else
             {
@@ -40,7 +39,11 @@ public class LeapYear
         }
         catch (OverflowException e)
         {
-            Console.WriteLine("Please input a year between 1580 and 3000");
+            Console.WriteLine("Please input a year between 1582 and {0}", Int32.MaxValue);
+        }
+        catch (InvalidYearException e)
+        {
+            Console.WriteLine("Please input a year after 1582");
         }
     }
 
@@ -52,5 +55,17 @@ public class LeapYear
     public static bool IsLeapYear(int year)
     {
         return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
+    }
+}
+
+[Serializable]
+class InvalidYearException : Exception
+{
+    public InvalidYearException() {  }
+
+    public InvalidYearException(string input)
+        : base(String.Format("Invalid year input: {0}", input))
+    {
+
     }
 }
