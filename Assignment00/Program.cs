@@ -29,19 +29,19 @@ public class LeapYear
                 }
             }
         }
-        catch (ArgumentNullException e)
+        catch (ArgumentNullException)
         {
             Console.WriteLine("Please input a number");
         }
-        catch (FormatException e)
+        catch (FormatException)
         {
             Console.WriteLine("Please input only a number");
         }
-        catch (OverflowException e)
+        catch (OverflowException)
         {
             Console.WriteLine("Please input a year between 1582 and {0}", Int32.MaxValue);
         }
-        catch (InvalidYearException e)
+        catch (InvalidYearException)
         {
             Console.WriteLine("Please input a year after 1582");
         }
