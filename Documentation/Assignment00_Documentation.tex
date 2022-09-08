@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[inkscapeformat=png]{svg}
+\usepackage{caption}
+\usepackage{float}
+
+\title{Assignment00 - Documentation}
+\author{Marcus Henrik Simonsen}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{IsLeapYear function}
+
+\begin{figure}[H]
+\centering
+\includesvg[width=0.8\textwidth]{Assignment00_IsLeapYear}
+\caption{Diagram visualizing the IsLeapYear algorithm.}
+\label{fig:IsLeapYear_algorithm}
+\end{figure}
+
+The algorithm for calculating whether a given year is a leap year or not is rather simple. First we check whether the year is divisible by 4. If not, return fase. If year is divisible by 4, check if the year is not be divisible by 100. If so, return true. Else, check if year is
+divisible by 400. If so return true, else return false. This algorithm is visualized in Figure \ref{fig:IsLeapYear_algorithm}.
+
+\end{document}
